@@ -29,9 +29,43 @@ while not game_over:
                 print(f'Please enter a numerical value greater than 0.')
         else:
             print(f'Please enter a numerical value greater than 0.')
-    #set a variable to show what move the player is on
+
+    #set variables for the CPU to count moves
+    move_count = 1
+    move_list = []
+
+ # Begin CPU computation of the most efficient way to kill the hydra
+    # repeat move 2 to change the tail number until it is both even and, when added to the head number, creates an even sum. """
+    while tail_num % 2 != 0 and ((tail_num / 2) + head_num) % 2 != 0:
+        # repeat move 2
+        tail_num -= 1
+        tail_num += 2
+        # record the move into a list to print later
+        move_list.append(
+            f'Move {move_count}: Use the second move. Hydra now has {head_num} heads and {tail_num} tails.')
+        move_count += 1
+    # repeat move 4 until there are no tails left
+    while tail_num != 0:
+        tail_num -= 2
+        head_num += 1
+        # record the move into a list to print later
+        move_list.append(
+            f'Move {move_count}: Use the forth move. Hydra now has {head_num} heads and {tail_num} tails.')
+        move_count += 1
+    # repeat move 3 until there are no heads left
+    while head_num != 0:
+        head_num -= 2
+        # record the move into a list to print later
+        move_list.append(
+            f'Move {move_count}: Use the third move. Hydra now has {head_num} heads and {tail_num} tails.')
+        # only change the move counter if this iteration didn't kill the hydra
+        if head_num != 0:
+            move_count += 1
+
+    #set variable for the game to count the player's moves
     move_number = 1
-    #enter a loop that allows the user to make moves until there are no more heads and tails
+
+    # ENTER GAME: enter a loop that allows the user to make moves until there are no more heads and tails
     while head_amt != 0 or tail_amt != 0:
         #set variable for input interpretation
         valid_move = False
@@ -85,7 +119,12 @@ while not game_over:
         if head_amt != 0 or tail_amt != 0:
             move_number += 1
         print(f' The Hydra now has {head_amt} heads and {tail_amt} tails.')
-    print(f'Congratulations! You killed the Hydra in {move_number} moves.')
+    print(f'\nCongratulations! You killed the Hydra in {move_number} moves.')
+    # report the most efficient way to kill the hydra
+    print(f'The most efficient way to kill the hydra was in {move_count} moves.\n')
+    # print every move to kill the hydra most efficiently
+    for move in move_list:
+        print(move)
     # ask the user to play again
     # set placeholder
     play_again = ''
