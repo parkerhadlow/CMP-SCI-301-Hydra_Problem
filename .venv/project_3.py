@@ -72,10 +72,13 @@ while not game_over:
         #user selects what move to use
         while not valid_move:
             move = input(f'Move {move_number}:')
+            #if they enter a number, convert it to an integer to do further checks
             if move.isdigit():
                 move = int(move)
+                #check that it's in the proper range of available moves
                 if move >= 1 and move <= 5:
                     valid_move = True
+                    #if the move would force the hydra to remove more appendages than it has, make the move invalid.
                     if move == 1:
                         if head_amt < 1:
                             valid_move = False
@@ -125,10 +128,10 @@ while not game_over:
     # print every move to kill the hydra most efficiently
     for move in move_list:
         print(move)
+
     # ask the user to play again
-    # set placeholder
     play_again = ''
-    # enter loop to collect proper input
+    # enter loop to collect proper input, take only y or n
     while play_again != 'y' and play_again != 'n':
         play_again = input('Would you like to play again? (y/n):')
         if play_again != 'y' and play_again != 'n':
@@ -139,4 +142,3 @@ while not game_over:
         # end the game if they enter n
         else:
             game_over = True
-
