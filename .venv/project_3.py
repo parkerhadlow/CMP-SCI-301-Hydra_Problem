@@ -2,17 +2,19 @@
 game_over = False
 while not game_over:
     # tell the user what the different moves are
-    print(f'Oh no Hercules! A Hydra is quickly approaching. You must slay it! Here are your options:')
-    print(f'Move 1: Cut off exactly one head, but another will grow in its place.')
-    print(f'Move 2: Cut off exactly one tail, but two more will grow in its place.')
-    print(f'Move 3: Cut off exactly two heads.')
-    print(f'Move 4: Cut off exactly two tails, but a new head wil grow.')
-    print(f'Move 5: Succumb to the Hydra.')
+    print(f'''
+Oh no Hercules! A Hydra is quickly approaching. You must slay it! Here are your options:
+Move 1: Cut off exactly one head, but another will grow in its place.
+Move 2: Cut off exactly one tail, but two more will grow in its place.
+Move 3: Cut off exactly two heads.
+Move 4: Cut off exactly two tails, but a new head wil grow.
+Move 5: Succumb to the Hydra.
+    ''')
 
     #take the initial head value from the user. assume an invalid input.
     valid_head_amt = False
     while not valid_head_amt:
-        head_amt = input("Number of heads:")
+        head_amt = input("Number of heads: ")
         #if they enter a digit, make it an integer to check that it's greater than zero
         if head_amt.isdigit():
             head_amt = int(head_amt)
@@ -28,7 +30,7 @@ while not game_over:
     #take the initial head value. assume an invalid input.
     valid_tail_amt = False
     while not valid_tail_amt:
-        tail_amt = input("Number of tails:")
+        tail_amt = input("Number of tails: ")
         # if they enter a digit, make it an integer to check that it's greater than zero
         if tail_amt.isdigit():
             tail_amt = int(tail_amt)
@@ -61,7 +63,7 @@ while not game_over:
         head_num += 1
         # record the move into a list to print later
         move_list.append(
-            f'Move {move_count}: Use the forth move. Hydra now has {head_num} heads and {tail_num} tails.')
+            f'Move {move_count}: Use the fourth move. Hydra now has {head_num} heads and {tail_num} tails.')
         move_count += 1
     # repeat move 3 until there are no heads left
     while head_num != 0:
